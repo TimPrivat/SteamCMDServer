@@ -7,11 +7,12 @@ DockerSetup:
 
 DockerBuild:
   stage: build
+  script:
     - docker build -t steamcmd .
 
 DockerRun:
   stage: run
-    - docker run --name steamcmd steamcmd
+    - docker run --rm --name steamcmd steamcmd
 
 DockerCleanup:
   stage: cleanup
@@ -19,7 +20,9 @@ DockerCleanup:
     - unset DOCKER_HOST
 
 
+
 stages:
   - setup
+  - build
   - run
   - cleanup
