@@ -5,10 +5,13 @@ DockerSetup:
     - eval $(ssh-agent)
     - ssh-add -k ~/.ssh/privatekey
 
-Main:
+DockerBuild:
+  stage: build
+    - docker build -t steamcmd .
+
+DockerRun:
   stage: run
-  script:
-    - echo hello
+    - docker run --name steamcmd steamcmd
 
 DockerCleanup:
   stage: cleanup
