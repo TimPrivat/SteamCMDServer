@@ -1,11 +1,11 @@
 FROM ubuntu:latest
 
 # create user for steam
-RUN whoami
+RUN adduser steam
 
 # install dependencies
 RUN apt-get update && \
-    apt-get install -y curl lib32gcc1 && \
+    apt-get install -y curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
