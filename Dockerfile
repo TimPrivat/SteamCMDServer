@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # create user for steam
-RUN useradd -m steam && passwd steam
+RUN useradd -m steam
 RUN -u steam -s
 
 WORKDIR /home/steam
