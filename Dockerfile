@@ -34,4 +34,5 @@ RUN chmod 777 entrypoint.sh
 USER steam
 
 # Execution vector
-ENTRYPOINT ["./entrypoint.sh"]
+#ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
