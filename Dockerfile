@@ -1,19 +1,19 @@
 FROM ubuntu:latest
 
 # create user for steam
-RUN useradd steam
+RUN useradd -m steam && psswd steam
+RUN -u steam -s
+
+WORKDIR /home/steam
 
 # install dependencies
-RUN apt-get update && \
-    apt-get install -y curl git-all && \
+RUN add-apt-repository multiverse && \
+    dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y curl git-all steamcmd && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Downloading SteamCMD and make the Steam directory owned by the steam user
-RUN mkdir -p /opt/steamcmd &&\
-    cd /opt/steamcmd &&\
-    curl -s https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -vxz &&\
-    chown -R steam /opt/steamcmd
 
 WORKDIR /tmp
 
@@ -21,9 +21,9 @@ RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
 
 WORKDIR /tmp/SteamTOTPGenerator
 
-RUN mv SteamTOTPGenerator-linux /opt/steamcmd && rm -rf /tmp/*
+RUN mv SteamTOTPGenerator-linux ~/Steam/ && rm -rf /tmp/*
 
-WORKDIR /opt/steamcmd
+WORKDIR  ~/Steam/
 
 COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
