@@ -3,7 +3,7 @@ DockerSetup:
   script:
     - export DOCKER_HOST=$DOCKER_HOST
     - eval $(ssh-agent)
-    - ssh-add -k /root/.ssh/privatekey
+    - ssh-add ~/.ssh/privatekey
     - sleep 5
 
 DockerBuild:
