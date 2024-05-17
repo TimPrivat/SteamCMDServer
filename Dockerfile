@@ -6,7 +6,7 @@ RUN useradd -m steam
 
 
 # install dependencies
-RUN apt-get install software-properties-common
+RUN apt-get update && apt-get install -y software-properties-common
 
 USER steam
 WORKDIR /home/steam
