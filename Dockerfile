@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y software-properties-common
 USER steam
 WORKDIR /home/steam
 
-RUN add-apt-repository multiverse && \
+RUN sudo add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y curl git-all steamcmd && \
