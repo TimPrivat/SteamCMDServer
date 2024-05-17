@@ -1,5 +1,9 @@
 FROM ubuntu:latest
 
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+
 WORKDIR /tmp
 # create user for steam
 RUN useradd -m steam
