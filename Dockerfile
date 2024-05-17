@@ -15,11 +15,16 @@ RUN mkdir -p /opt/steamcmd &&\
     curl -s https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -vxz &&\
     chown -R steam /opt/steamcmd
 
+WORKDIR /tmp
+
 RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
+
+RUN mv SteamTOTPGenerator-linux /opt/steamcmd && rm -rf /tmp/*
 
 WORKDIR /opt/steamcmd
 
 COPY steamscript.txt steamscript.txt
+COPY entrypoint.sh entrypoint.sh
 # SteamCMD should not be used as root, here we set up user and variables
 USER steam
 
