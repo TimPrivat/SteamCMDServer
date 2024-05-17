@@ -3,7 +3,7 @@ DockerSetup:
   script:
     - export DOCKER_HOST=$DOCKER_HOST
     - eval $(ssh-agent)
-    - ssh-add -k ~/.ssh/privatekey
+    - ssh-add -k /root/.ssh/privatekey
     - sleep 5
 
 DockerBuild:
@@ -13,7 +13,7 @@ DockerBuild:
 
 DockerRun:
   stage: run
-  script: 
+  script:
     - docker run --rm --name steamcmd steamcmd
 
 DockerCleanup:
