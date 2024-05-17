@@ -4,6 +4,7 @@ DockerSetup:
     - export DOCKER_HOST=$DOCKER_HOST
     - eval $(ssh-agent)
     - ssh-add -k ~/.ssh/privatekey
+    - sleep 5
 
 DockerBuild:
   stage: build
