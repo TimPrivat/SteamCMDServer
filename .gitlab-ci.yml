@@ -12,6 +12,7 @@ DockerBuild:
 
 DockerRun:
   stage: run
+  script: 
     - docker run --rm --name steamcmd steamcmd
 
 DockerCleanup:
