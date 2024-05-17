@@ -21,8 +21,6 @@ RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
 
 WORKDIR /tmp/SteamTOTPGenerator
 
-RUN ls
-
 RUN mv SteamTOTPGenerator-linux /opt/steamcmd && rm -rf /tmp/*
 
 WORKDIR /opt/steamcmd
@@ -32,6 +30,7 @@ COPY entrypoint.sh entrypoint.sh
 # SteamCMD should not be used as root, here we set up user and variables
 USER steam
 
+RUN ls
 
 # Execution vector
 ENTRYPOINT ["entrypoint.sh"]
