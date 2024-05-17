@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # create user for steam
-RUN adduser steam
+RUN whoami
 
 # install dependencies
 RUN apt-get update && \
