@@ -25,7 +25,7 @@ RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
 
 WORKDIR /opt/steamcmd
 
-COPY steamscript..txt steamscript..txt
+COPY steamscript.txt steamscript.txt
 # SteamCMD should not be used as root, here we set up user and variables
 USER steam
 
