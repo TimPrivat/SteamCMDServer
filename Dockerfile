@@ -7,6 +7,7 @@ USER steam
 WORKDIR /home/steam
 
 # install dependencies
+RUN apt-get install software-properties-common
 RUN add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
