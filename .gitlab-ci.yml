@@ -4,13 +4,10 @@ DockerSetup:
     - export DOCKER_HOST=$DOCKER_HOST
     - eval $(ssh-agent)
     - ssh-add ~/.ssh/privatekey
-    - sleep 5
     - docker build -t steamcmd .
+    - docker run --rm --name steamcmd steamcmd
+    - unset DOCKER_HOST
 
-.DockerBuild:
-  stage: build
-  script:
-    - docker build -t steamcmd .
 
 DockerRun:
   stage: run
@@ -24,5 +21,5 @@ DockerCleanup:
 
 stages:
   - setup
-  - run
-  - cleanup
+  #- run
+  #- cleanup
