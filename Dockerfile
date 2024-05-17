@@ -15,6 +15,7 @@ RUN add-apt-repository multiverse && \
    # apt-get clean && \
    # rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN curl -o steamcmd.deb http://ftp.de.debian.org/debian/pool/non-free/s/steamcmd/steamcmd_0~20180105-4_i386.deb
+RUN ls
 RUN apt-get install -y ./steamcmd.deb
 
 
