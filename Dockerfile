@@ -19,6 +19,8 @@ WORKDIR /tmp
 
 RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
 
+RUN ls
+
 RUN mv SteamTOTPGenerator-linux /opt/steamcmd && rm -rf /tmp/*
 
 WORKDIR /opt/steamcmd
