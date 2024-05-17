@@ -1,13 +1,7 @@
 FROM ubuntu:latest
 
 # create user for steam
-RUN adduser \
-	--home /home/steam \
-	--disabled-password \
-	--shell /bin/bash \
-	--gecos "user for running steam" \
-	--quiet \
-	steam
+RUN adduser steam
 
 # install dependencies
 RUN apt-get update && \
