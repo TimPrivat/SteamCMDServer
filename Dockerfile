@@ -33,4 +33,4 @@ USER steam
 RUN ls
 
 # Execution vector
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
