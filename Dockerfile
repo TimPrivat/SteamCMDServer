@@ -9,7 +9,7 @@ RUN useradd -m steam
 RUN apt-get update && apt-get install -y software-properties-common
 
 RUN add-apt-repository multiverse && \
-    dpkg --add-architecture i386 && \
+   # dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y curl git-all steamcmd && \
     apt-get clean && \
