@@ -3,11 +3,14 @@ FROM ubuntu:latest
 # create user for steam
 RUN useradd -m steam
 
-USER steam
-WORKDIR /home/steam
+
 
 # install dependencies
 RUN apt-get install software-properties-common
+
+USER steam
+WORKDIR /home/steam
+
 RUN add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
