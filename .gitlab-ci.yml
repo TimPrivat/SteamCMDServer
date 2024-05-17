@@ -24,6 +24,5 @@ DockerCleanup:
 
 stages:
   - setup
- # - build
   - run
   - cleanup
