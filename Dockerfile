@@ -4,6 +4,7 @@ FROM ubuntu:latest
 RUN useradd -m steam
 RUN -u steam -s
 
+USER steam
 WORKDIR /home/steam
 
 # install dependencies
@@ -31,7 +32,7 @@ COPY entrypoint.sh entrypoint.sh
 RUN chmod 777 entrypoint.sh
 
 
-USER steam
+
 
 # Execution vector
 #ENTRYPOINT ["./entrypoint.sh"]
