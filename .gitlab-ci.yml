@@ -9,12 +9,12 @@ DockerSetup:
     - unset DOCKER_HOST
 
 
-DockerRun:
+.DockerRun:
   stage: run
   script:
     - docker run --rm --name steamcmd steamcmd
 
-DockerCleanup:
+.DockerCleanup:
   stage: cleanup
   script:
     - unset DOCKER_HOST
