@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # create user for steam
-RUN useradd -m steam && psswd steam
+RUN useradd -m steam && passwd steam
 RUN -u steam -s
 
 WORKDIR /home/steam
@@ -23,7 +23,7 @@ WORKDIR /tmp/SteamTOTPGenerator
 
 RUN mv SteamTOTPGenerator-linux ~/Steam/ && rm -rf /tmp/*
 
-WORKDIR  ~/Steam/
+WORKDIR  /home/steam/Steam/
 
 COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
