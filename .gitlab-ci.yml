@@ -5,7 +5,7 @@ DockerSetup:
     - eval $(ssh-agent)
     - ssh-add ~/.ssh/privatekey
     - sleep 5
-     - docker build -t steamcmd .
+    - docker build -t steamcmd .
 
 DockerBuild:
   stage: build
