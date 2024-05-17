@@ -28,9 +28,10 @@ WORKDIR /opt/steamcmd
 COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
 # SteamCMD should not be used as root, here we set up user and variables
-USER steam
-
 RUN chmod 777 entrypoint.sh
+
+
+USER steam
 
 # Execution vector
 ENTRYPOINT ["./entrypoint.sh"]
