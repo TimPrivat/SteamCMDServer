@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ls
+./steamcmd.sh +runscript steamscript.txt
 
