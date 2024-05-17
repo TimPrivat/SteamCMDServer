@@ -7,7 +7,7 @@ DockerSetup:
     - sleep 5
     - docker build -t steamcmd .
 
-DockerBuild:
+.DockerBuild:
   stage: build
   script:
     - docker build -t steamcmd .
