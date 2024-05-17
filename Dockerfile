@@ -8,10 +8,7 @@ RUN useradd -m steam
 # install dependencies
 RUN apt-get update && apt-get install -y software-properties-common
 
-USER steam
-WORKDIR /home/steam
-
-RUN sudo add-apt-repository multiverse && \
+RUN add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y curl git-all steamcmd && \
@@ -32,9 +29,13 @@ WORKDIR  /home/steam/Steam/
 COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
 # SteamCMD should not be used as root, here we set up user and variables
-RUN chmod 777 entrypoint.sh
+WORKDIR /root/home/
 
+RUN mv Steam /home/steam
+RUN chown -R steam:steam Steam && chmod -R 750
 
+USER steam
+WORKDIR /home/steam
 
 
 # Execution vector
