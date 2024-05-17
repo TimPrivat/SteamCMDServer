@@ -1,9 +1,8 @@
 FROM ubuntu:latest
 
+WORKDIR /tmp
 # create user for steam
 RUN useradd -m steam
-
-
 
 # install dependencies
 RUN apt-get update && apt-get install -y software-properties-common
@@ -11,14 +10,15 @@ RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y curl git-all 
+    apt-get install -y curl git-all
     #&& \
    # apt-get clean && \
    # rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-get install -y steamcmd
+RUN curl -o steamcmd.deb http://ftp.de.debian.org/debian/pool/non-free/s/steamcmd/steamcmd_0~20180105-4_i386.deb
+RUN apt-get install -y steamcmd.deb
 
 
-WORKDIR /tmp
+
 
 RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
 
