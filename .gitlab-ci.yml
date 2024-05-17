@@ -1,0 +1,22 @@
+DockerSetup:
+  stage: setup
+  script:
+    - export DOCKER_HOST=$DOCKER_HOST
+    - eval $(ssh-agent)
+    - ssh-add -k ~/.ssh/privatekey
+
+Main:
+  stage: run
+  script:
+    - echo hello
+
+DockerCleanup:
+  stage: cleanup
+  script:
+    - unset DOCKER_HOST
+
+
+stages:
+  - setup
+  - run
+  - cleanup
