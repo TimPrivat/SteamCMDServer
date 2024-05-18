@@ -1,4 +1,5 @@
 @sSteamCmdForcePlatformType windows
 
 app_update 113200
+app_update 60
 quit
