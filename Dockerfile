@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y curl git-all lib32gcc-s1 install xfonts-100dpi
+    apt-get install -y curl git-all lib32gcc-s1 xfonts-100dpi
 
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 RUN mv linux32 /home/steam/Steam
