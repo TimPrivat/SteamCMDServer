@@ -14,14 +14,12 @@ RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y curl git-all
+    apt-get install -y curl git-all lib32gcc-s1
     #&& \
    # apt-get clean && \
    # rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN curl -o steamcmd.deb http://ftp.de.debian.org/debian/pool/non-free/s/steamcmd/steamcmd_0~20180105-4_i386.deb
-RUN ls
-RUN apt-get install -y ./steamcmd.deb
-
+RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+Run ls
 
 
 
