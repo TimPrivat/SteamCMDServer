@@ -8,7 +8,7 @@
 
 convertIDtoName (){
     local APPID=$1
-    local NAME= =$(curl https://api.steampowered.com/ISteamApps/GetAppList/v0002/ | jq ".applist.apps | .[] | select(.appid==$APPID).name")
+    local NAME= ="$(curl https://api.steampowered.com/ISteamApps/GetAppList/v0002/ | jq \".applist.apps | .[] | select(.appid==$APPID).name\")"
 
     echo "$NAME"
 }
