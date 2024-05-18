@@ -35,11 +35,15 @@ WORKDIR  /home/steam/Steam/
 
 # SteamCMD should not be used as root, here we set up user and variables
 
-USER steam
-WORKDIR /home/steam
+
+WORKDIR /home/steam/Steam
 
 COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
+
+RUN chown -R steam:steam /home/steam/Steam
+
+USER steam
 
 # Execution vector
 #ENTRYPOINT ["./entrypoint.sh"]
