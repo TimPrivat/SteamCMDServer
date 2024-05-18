@@ -13,7 +13,9 @@ convertIDtoName (){
     echo "$NAME"
 }
 
-echo "APPID 60: $(convertIDtoName 60)"
-
+APP_ID=60
+NAME=$(convertIDtoName $APP_ID)
+echo "APPID $APP_ID: $NAME"
+mkdir /srv/samba/games/Steam/steamapps/common/$NAME
 
 
