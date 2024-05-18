@@ -41,7 +41,7 @@ WORKDIR /home/steam/Steam
 COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
 
-RUN chown -R steam:steam /home/steam/Steam
+RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/
 
 USER steam
 
