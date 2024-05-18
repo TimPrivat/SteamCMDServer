@@ -1,2 +1,3 @@
+@sSteamCmdForcePlatformType window
 app_update 113200
 quit
