@@ -1,6 +1,6 @@
 #!/bin/bash
 
 ls
-echo "$(./SteamTOTPGenerator $SteamAccountSecret)"
+echo "$(./SteamTOTPGenerator-linux $SteamAccountSecret)"
 ./steamcmd.sh +runscript steamscript.txt
 
