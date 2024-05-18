@@ -1,3 +1,1 @@
-set_steam_guard_code $ONE_TIME_CODE
-login $STEAM_USERNAME $STEAM_PASSWORD
 quit
