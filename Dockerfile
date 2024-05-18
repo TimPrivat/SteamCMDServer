@@ -19,11 +19,13 @@ RUN add-apt-repository multiverse && \
    # apt-get clean && \
    # rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
-Run ls
+RUN ./steamcmd.sh
 
 
 
 RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
+
+RUN mkdir ~/Steam
 
 WORKDIR /tmp/SteamTOTPGenerator
 
