@@ -10,7 +10,7 @@ main() {
     DIR_PATH="/srv/samba/games/Steam/steamapps/common/$NAME"
     mkdir -p "$DIR_PATH"
     ./steamcmd.sh +force_install_dir "$DIR_PATH" +login $STEAM_USERNAME $STEAM_PASSWORD $ONE_TIME_CODE +@sSteamCmdForcePlatformType windows +app_update $APP_ID +quit \
-     && mv "$DIR_PATH/appmanifest_$APP_ID.acf" /srv/samba/games/Steam/steamapps/ \
+     && mv "$DIR_PATH/steamapps/appmanifest_$APP_ID.acf" /srv/samba/games/Steam/steamapps/ \
      && rm -rf /srv/samba/games/Steam/steamapps/common/$NAME/steamapps
        
 }
