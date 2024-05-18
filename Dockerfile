@@ -19,7 +19,7 @@ RUN add-apt-repository multiverse && \
    # apt-get clean && \
    # rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
-RUN linux32/steamcmd
+#RUN linux32/steamcmd
 
 
 
