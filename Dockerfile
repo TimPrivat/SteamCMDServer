@@ -28,14 +28,12 @@ RUN mv SteamTOTPGenerator-linux /home/steam/Steam/ && rm -rf /tmp/*
 
 WORKDIR /home/steam/Steam
 
-#Copy Scripts
-COPY steamscript.txt steamscript.txt
+#Copy Script
 COPY entrypoint.sh entrypoint.sh
 
 #Manage UserAccess
 RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/
 RUN chown -R steam:steam /srv/ && chmod 777 -R /srv/
-
 
 # Switch to Steamuser
 USER steam
@@ -43,7 +41,6 @@ USER steam
 #Setup SteamCMD
 #weird error that can be ignored
 RUN linux32/steamcmd || :
-
 
 # StartingPoint
 ENTRYPOINT ["./entrypoint.sh"]
