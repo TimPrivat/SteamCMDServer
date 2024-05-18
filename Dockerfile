@@ -46,5 +46,5 @@ RUN linux32/steamcmd || :
 
 
 # StartingPoint
-#ENTRYPOINT ["./entrypoint.sh"]
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["./entrypoint.sh"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
