@@ -7,5 +7,5 @@ echo "One Time Code: $ONE_TIME_CODE"
 printenv | grep "ONE_TIME_CODE"
 
 
-#./steamcmd.sh +runscript steamscript.txt
+./steamcmd.sh +runscript steamscript.txt
 
