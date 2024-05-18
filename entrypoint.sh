@@ -13,7 +13,7 @@ convertIDtoName (){
     echo "$NAME"
 }
 
-echo "APPID 60: $(convertIDtoName() 60)"
+echo "APPID 60: $(convertIDtoName 60)"
 
 
 
