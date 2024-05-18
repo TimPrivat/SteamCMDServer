@@ -45,6 +45,8 @@ RUN chown -R steam:steam /home/steam/Steam
 
 USER steam
 
+RUN linux32/steamcmd
+
 # Execution vector
 #ENTRYPOINT ["./entrypoint.sh"]
 ENTRYPOINT ["tail", "-f", "/dev/null"]
