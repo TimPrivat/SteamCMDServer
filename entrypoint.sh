@@ -5,7 +5,7 @@
 
 
 #./steamcmd.sh +force_install_dir /srv/samba/games/Steam +login $STEAM_USERNAME $STEAM_PASSWORD $ONE_TIME_CODE +runscript steamscript.txt
-echo "APPID 60: $(convertIDtoName 60)"
+echo "APPID 60: $(convertIDtoName() 60)"
 
 convertIDtoName (){
     local APPID=$1
