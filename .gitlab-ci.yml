@@ -12,7 +12,7 @@ DockerSetup:
 .DockerRun:
   stage: run
   script:
-    - docker run --env $SteamAccountSecret --rm --name steamcmd steamcmd
+    - docker run --env $SteamAccountSecret --env $STEAM_USERNAME --env $STEAM_PASSWORD --rm --name steamcmd steamcmd
 
 .DockerCleanup:
   stage: cleanup
