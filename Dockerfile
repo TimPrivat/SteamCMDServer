@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /tmp
 # create user for steam
 RUN useradd -m steam
-RUN mkdir -p /home/steam/Steam
+RUN mkdir -p /home/steam/Steam && mkdir -p /srv/samba/games/Steam
+
 # install dependencies
 RUN apt-get update && apt-get install -y software-properties-common
 
@@ -32,7 +33,9 @@ COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
 
 #Manage UserAccess
-RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/
+RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/ \
+    && chown -R steam:steam /srv/samba/games/Steam && chmod 777 -R /srv/samba/games/Steam
+
 
 # Switch to Steamuser
 USER steam
