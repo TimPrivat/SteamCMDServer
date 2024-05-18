@@ -33,8 +33,8 @@ COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
 
 #Manage UserAccess
-RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/ \
-    && chown -R steam:steam /srv/samba/games/Steam && chmod 777 -R /srv/samba/games/Steam
+RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/ 
+RUN chown -R steam:steam /srv/ && chmod 777 -R /srv/
 
 
 # Switch to Steamuser
