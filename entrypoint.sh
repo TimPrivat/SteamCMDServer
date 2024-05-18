@@ -6,6 +6,8 @@ echo "One Time Code: $ONE_TIME_CODE"
 
 printenv | grep "ONE_TIME_CODE"
 
+username=$STEAM_USERNAME
+password=$STEAM_PASSWORD
 
-./steamcmd.sh +login $STEAM_USERNAME $STEAM_PASSWORD $ONE_TIME_CODE +runscript steamscript.txt
+./steamcmd.sh +login $username $password $ONE_TIME_CODE +runscript steamscript.txt
 
