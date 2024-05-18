@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /tmp
 # create user for steam
 RUN useradd -m steam
-RUN mkdir /home/steam/Steam
+RUN mkdir -p /home/steam/Steam
 # install dependencies
 RUN apt-get update && apt-get install -y software-properties-common
 
