@@ -16,7 +16,8 @@ RUN add-apt-repository multiverse && \
     apt-get update && \
     apt-get install -y curl git-all lib32gcc-s1
 
-RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -C /home/steam/Steam
+RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+RUN mv linux32 /home/steam/Steam
 #RUN linux32/steamcmd
 
 
