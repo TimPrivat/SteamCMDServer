@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /tmp
 # create user for steam
 RUN useradd -m steam
-
+RUN mkdir /home/steam/Steam
 # install dependencies
 RUN apt-get update && apt-get install -y software-properties-common
 
@@ -16,28 +16,29 @@ RUN add-apt-repository multiverse && \
     apt-get update && \
     apt-get install -y curl git-all lib32gcc-s1
 
-RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -C /home/steam/Steam
 #RUN linux32/steamcmd
 
 
 
 RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
 
-RUN mkdir ~/Steam
+
 
 WORKDIR /tmp/SteamTOTPGenerator
 
-RUN mv SteamTOTPGenerator-linux ~/Steam/ && rm -rf /tmp/*
+RUN mv SteamTOTPGenerator-linux /home/steam/Steam/ && rm -rf /tmp/*
 
 WORKDIR  /home/steam/Steam/
 
-COPY steamscript.txt steamscript.txt
-COPY entrypoint.sh entrypoint.sh
+
 # SteamCMD should not be used as root, here we set up user and variables
 
 USER steam
 WORKDIR /home/steam
 
+COPY steamscript.txt steamscript.txt
+COPY entrypoint.sh entrypoint.sh
 
 # Execution vector
 #ENTRYPOINT ["./entrypoint.sh"]
