@@ -11,7 +11,7 @@ DockerSetup:
        --env STEAM_PASSWORD=$STEAM_PASSWORD \
        --rm \
        --name steamcmd \
-       --mount type=bind,source=/srv/samba/games/Steam,target=/srv/samba/games/Steam
+       --mount type=bind,source=/srv/samba/games/Steam,target=/srv/samba/games/Steam \
        steamcmd
     - unset DOCKER_HOST
 
