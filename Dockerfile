@@ -1,8 +1,6 @@
 FROM ubuntu:latest
 
-
 ENV DEBIAN_FRONTEND=noninteractive
-
 
 WORKDIR /tmp
 # create user for steam
@@ -16,39 +14,34 @@ RUN add-apt-repository multiverse && \
     apt-get update && \
     apt-get install -y curl git-all lib32gcc-s1 xfonts-100dpi
 
+#install steamcmd
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 RUN mv linux32 /home/steam/Steam
-#RUN linux32/steamcmd
 
-
-
+#install TOTPGenerator
 RUN git clone https://github.com/TimPrivat/SteamTOTPGenerator.git
-
-
 
 WORKDIR /tmp/SteamTOTPGenerator
 
 RUN mv SteamTOTPGenerator-linux /home/steam/Steam/ && rm -rf /tmp/*
 
-WORKDIR  /home/steam/Steam/
-
-
-# SteamCMD should not be used as root, here we set up user and variables
-
-
 WORKDIR /home/steam/Steam
 
+#Copy Scripts
 COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
 
+#Manage UserAccess
 RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/
 
-
+# Switch to Steamuser
 USER steam
+
+#Setup SteamCMD
 #weird error that can be ignored
 RUN linux32/steamcmd || :
 
 
-# Execution vector
-#ENTRYPOINT ["./entrypoint.sh"]
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+# StartingPoint
+ENTRYPOINT ["./entrypoint.sh"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
