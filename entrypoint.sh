@@ -2,7 +2,7 @@
 
 main() {
 
-    APP_ID=	113200
+    APP_ID=113200
     NAME=$(convertIDtoName $APP_ID)
     ONE_TIME_CODE=$(./SteamTOTPGenerator-linux $SteamAccountSecret)
     echo "APPID $APP_ID: $NAME"
