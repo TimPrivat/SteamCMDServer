@@ -1,3 +1,4 @@
 @sSteamCmdForcePlatformType windows
+force_install_dir /srv/samba/games/Steam
 app_update 113200
 quit
