@@ -42,7 +42,7 @@ COPY steamscript.txt steamscript.txt
 COPY entrypoint.sh entrypoint.sh
 
 RUN chown -R steam:steam /home/steam/ && chmod 777 -R /home/steam/
-RUN linux32/steamcmd
+#RUN linux32/steamcmd
 
 USER steam
 
