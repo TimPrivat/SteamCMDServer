@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y curl git-all lib32gcc-s1 xfonts-100dpi jq
+    apt-get install -y curl git-all lib32gcc-s1 xfonts-100dpi locales-all
 
 #install steamcmd
 RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
