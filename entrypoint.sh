@@ -10,7 +10,7 @@ main() {
         RAW_NAME=$(convertIDtoName $APP_ID)
         #Windows cant handle '
         NAME="${NAME//\'}"
-        NAME="${NAME//:}"
+        NAME="${NAME//\:}"
         
         ONE_TIME_CODE=$(./SteamTOTPGenerator-linux $SteamAccountSecret)
         echo "APPID $APP_ID: $NAME"
