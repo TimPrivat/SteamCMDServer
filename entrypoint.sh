@@ -2,30 +2,28 @@
 
 main() {
 
-    # APP_ID=113200
-    # NAME=$(convertIDtoName $APP_ID)
-    # ONE_TIME_CODE=$(./SteamTOTPGenerator-linux $SteamAccountSecret)
-    # echo "APPID $APP_ID: $NAME"
+    ALL_GAMES=$(receiveAllOwnedGames)
 
-    # DIR_PATH="/srv/samba/games/Steam/steamapps/common/$NAME"
-    # mkdir -p "$DIR_PATH"
-    # ./steamcmd.sh +force_install_dir "$DIR_PATH" +login $STEAM_USERNAME $STEAM_PASSWORD $ONE_TIME_CODE +@sSteamCmdForcePlatformType windows +app_update $APP_ID +quit \
-    #  && mv "$DIR_PATH/steamapps/appmanifest_$APP_ID.acf" /srv/samba/games/Steam/steamapps/ \
-    #  && rm -rf /srv/samba/games/Steam/steamapps/common/$NAME/steamapps
-    receiveAllOwnedGames
-}
+    for GAME in $ALL_GAMES; do
 
-receiveAllOwnedGames() {
-    ALL_GAMES=$(curl "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&format=json" | jq -r ".response.games[].appid")
-    
-    iteration=0
-    for game in ${ALL_GAMES}; do
+        APP_ID=$GAME
+        NAME=$(convertIDtoName $APP_ID)
+        ONE_TIME_CODE=$(./SteamTOTPGenerator-linux $SteamAccountSecret)
+        echo "APPID $APP_ID: $NAME"
 
-    echo "$iteration $game"
-    iteration=$(($iteration+1))
+        DIR_PATH="/srv/samba/games/Steam/steamapps/common/$NAME"
+        mkdir -p "$DIR_PATH"
+        ./steamcmd.sh +force_install_dir "$DIR_PATH" +login $STEAM_USERNAME $STEAM_PASSWORD $ONE_TIME_CODE +@sSteamCmdForcePlatformType windows +app_update $APP_ID +quit &&
+            mv "$DIR_PATH/steamapps/appmanifest_$APP_ID.acf" /srv/samba/games/Steam/steamapps/ &&
+            rm -rf /srv/samba/games/Steam/steamapps/common/$NAME/steamapps
 
     done
 
+}
+
+receiveAllOwnedGames() {
+    local ALL_GAMES=$(curl "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&format=json" | jq -r ".response.games[].appid")
+    echo $ALL_GAMES
 }
 
 convertIDtoName() {
