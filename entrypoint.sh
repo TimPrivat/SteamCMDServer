@@ -12,7 +12,11 @@ main() {
     ./steamcmd.sh +force_install_dir "$DIR_PATH" +login $STEAM_USERNAME $STEAM_PASSWORD $ONE_TIME_CODE +@sSteamCmdForcePlatformType windows +app_update $APP_ID +quit \
      && mv "$DIR_PATH/steamapps/appmanifest_$APP_ID.acf" /srv/samba/games/Steam/steamapps/ \
      && rm -rf /srv/samba/games/Steam/steamapps/common/$NAME/steamapps
-       
+}
+
+receiveAllOwnedGames() {
+    All_GAMES=$(curl https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&format=json)
+    echo "All_GAMES: $All_GAMES" 
 }
 
 convertIDtoName() {

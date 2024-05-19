@@ -5,7 +5,7 @@ DockerSetup:
     - eval $(ssh-agent)
     - ssh-add ~/.ssh/privatekey
     - docker build -t steamcmd .
-    - docker run --env SteamAccountSecret=$SteamAccountSecret --env STEAM_USERNAME=$STEAM_USERNAME --env STEAM_PASSWORD=$STEAM_PASSWORD --rm --name steamcmd --mount type=bind,source=/srv/samba/games/Steam,target=/srv/samba/games/Steam steamcmd
+    - docker run --rm --name steamcmd --env-file=envfile --mount type=bind,source=/srv/samba/games/Steam,target=/srv/samba/games/Steam steamcmd
     - unset DOCKER_HOST
 
 
