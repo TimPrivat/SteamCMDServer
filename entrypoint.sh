@@ -7,7 +7,9 @@ main() {
     for GAME in $ALL_GAMES; do
 
         APP_ID=$GAME
-        NAME=$(convertIDtoName $APP_ID)
+        RAW_NAME=$(convertIDtoName $APP_ID)
+        #Windows cant handle '
+        NAME="${$RAW_NAME//\'}"
         ONE_TIME_CODE=$(./SteamTOTPGenerator-linux $SteamAccountSecret)
         echo "APPID $APP_ID: $NAME"
 
