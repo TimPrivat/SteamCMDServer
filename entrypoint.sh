@@ -12,6 +12,7 @@ main() {
         NAME="${RAW_NAME//\'}"
         ONE_TIME_CODE=$(./SteamTOTPGenerator-linux $SteamAccountSecret)
         echo "APPID $APP_ID: $NAME"
+        echo "NAME: $NAME"
 
         DIR_PATH="/srv/samba/games/Steam/steamapps/common/$NAME"
         mkdir -p "$DIR_PATH"
