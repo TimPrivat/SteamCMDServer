@@ -16,9 +16,16 @@ main() {
 }
 
 receiveAllOwnedGames() {
-    echo "${STEAM_ID}"
-    All_GAMES=$(curl "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&format=json")
-    echo "All_GAMES: $All_GAMES"
+    ALL_GAMES=$(curl "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&format=json" | jq -r ".response.games[].appid")
+    
+    iteration=0
+    for game in ${ALL_GAMES}; do
+
+    echo "$iteration $game"
+    iteration=$(($iteration+1))
+
+    done
+
 }
 
 convertIDtoName() {
